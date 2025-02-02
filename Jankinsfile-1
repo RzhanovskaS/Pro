@@ -1,11 +1,10 @@
 pipeline {
-  agent any
-  stages {
-    stage ('run collection') {
-      steps {
-        bat 'docker run -t postman/newman run -h'
-        docker run --rm -v "%WORKSPACE%:/etc/newman" -w /etc/newman postman/newman run "15.1 Collection_Rzhanovska_S.postman_collection.json" --color off --disable-unicode
-      }
+    agent any
+    stages {
+        stage('Run Collection') {
+            steps {
+                bat 'docker run --rm -v "%WORKSPACE%:/etc/newman" -w /etc/newman postman/newman run "15.1 Collection_Rzhanovska_S.postman_collection.json" --color off --disable-unicode'
+            }
+        }
     }
-  }
 }
