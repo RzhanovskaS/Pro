@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Run Collection') {
             steps {
-                bat 'docker run --rm -v "%WORKSPACE%:/etc/newman" -w /etc/newman postman/newman run Rzh_forJS.postman_collection.json" --color off --disable-unicode'
+                bat 'docker run --rm -v "%WORKSPACE%:/etc/newman" -w /etc/newman postman/newman run "Rzh_forJS.postman_collection.json" --color off --disable-unicode'
             }
         }
     }
