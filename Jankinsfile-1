@@ -4,7 +4,7 @@ pipeline {
     stage ('run collection') {
       steps {
         bat 'docker run -t postman/newman run -h'
-        bat 'docker run -v ${WORKSPACE}: /ets/newman --workdir /etc/newman -t postman/newman run 15.1 Collection_Rzhanovska_S.postman_collection.json --color off --disable-unicode'
+        docker run --rm -v "%WORKSPACE%:/etc/newman" -w /etc/newman postman/newman run "15.1 Collection_Rzhanovska_S.postman_collection.json" --color off --disable-unicode
       }
     }
   }
