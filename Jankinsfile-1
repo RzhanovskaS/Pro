@@ -1,9 +1,12 @@
 pipeline {
     agent any
+
     stages {
-        stage('Run Collection') {
+        stage('Run Tests for Multiple Base URLs') {
             steps {
-                bat 'docker run --rm -v "%WORKSPACE%:/etc/newman" -w /etc/newman postman/newman run "Rzh_forJS.postman_collection.json" --color off --disable-unicode'
+                bat '''
+                    docker run --rm -v "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\https:/etc/newman" -w /etc/newman postman/newman run "Rzh_forJS.postman_collection.json" --iteration-data "environments.json" --color off --disable-unicode
+                '''
             }
         }
     }
